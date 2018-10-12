@@ -1,0 +1,75 @@
+****ES6允许使用“箭头”（=>）定义函数
+栗子：
+var f = v => v;等同于：
+var f=function(v){
+  return v;
+}
+注意！！！* 如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分。*
+栗子：
+var f=()=>5;等同于：
+var f=function(){
+  return 5;
+}
+var sum=(num1+num2)=>num1+num2;等同于：
+var sum=funtion(num1+num2){
+   return sum1+num2;
+}
+注意！！！*如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回。*
+栗子：
+var sum=(num1,num2)=>{return num1+num2;}
+***由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号
+栗子：
+var getTempItem=(id,temp)=>({id:id,name:temp});
+console.log("1","mytempname");//{id: "1", name: "mytemp"}等同于：
+var getTempItem=function(id,temp){
+  return {id:id,name:temp};
+}
+************************函数参数可以设置默认值
+栗子：
+function Point(x=0,y=0){
+  this.x=x;
+  this.y=y;
+}
+
+var p=new Point();//p{x:0,y:0}
+var p=new Ponit(10,20)//p{x:10,y:20}等同于：
+var Point=(x=0,y=0)=>({x:x,y:y});
+		console.log(Point(10,20));
+    
+****************模板字符串
+var name="Bob",date="today";
+var greeting=`Hello ${name},how are you ${time}`;
+console.log(greeting)//Hello Bob,how are you today
+***************for ...of，JavaScript原有的for…in循环，只能获得对象的键名，不能直接获取键值。ES6提供for…of循环，允许遍历获得键值。
+栗子：
+var arr=["a","b","c","d"];
+for (a in arr){
+  console.log(a);//0,1,2,3,
+}
+for(a of arr){
+  console.log('>>',a);//a,b,c,d
+}
+**************for…of循环还可以遍历对象------!!!!!。
+var es6={
+  edition:6,
+  committee:"TC39",
+  standard:"ECMA-262"
+};
+for(e in es6){
+console.log(e);//edition,committe,standard
+}
+
+var engines = new Set(["Gecko", "Trident", "Webkit", "Webkit"]);
+for (var e of engines) {
+  console.log(e);//Gecko,Trident,Webkit-------不会打印重复值注意！！！！
+}
+
+var es6 = new Map();
+es6.set("edition", 6);
+es6.set("committee", "TC39");
+es6.set("standard", "ECMA-262");
+for (var [name, value] of es6) {
+  console.log(name + ": " + value);// edition: 6
+                                  // committee: TC39
+                                  // standard: ECMA-262
+}
