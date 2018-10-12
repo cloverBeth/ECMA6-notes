@@ -1,0 +1,34 @@
+****rest运算符（…），用于获取函数的多余参数，这样就不需要使用arguments.length了。rest运算符后面是一个数组变量，该变量将多余的参数放入数组中。
+栗子：
+function add(...values) {
+   let sum = 0;
+
+   for (var val of values) {
+      sum += val;
+   }
+
+   return sum;
+}
+
+add(2, 5, 3) // 10
+
+function push(array, ...items) { 
+  items.forEach(function(item) {
+    array.push(item);
+    console.log(item);
+  });
+}
+ 
+var a = [];
+push(a, "a1", "a2", "a3", "a4"); //[a1,a2,...a5]
+****将数组转为参数序列
+栗子：
+function f(s1, s2, s3, s4, s5) {
+ 	console.log(s1 + s2 + s3 + s4 +s5);
+}
+
+var a = ["a2", "a3", "a4", "a5"];
+
+f("a1", ...a);//a1a2a3a4a5
+*******求数组中的最大值
+Math.max(...[14, 3, 77])=======>等同于Math.max(14, 3, 77);
