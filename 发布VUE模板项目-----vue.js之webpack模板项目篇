@@ -1,0 +1,7 @@
+***************************
+npm run build
+***************************
+使用vue-webpack模板
+重新打开一个git bash窗口，执行以下命令：
+
+vue init webpack my-webpack-demo
